@@ -3,9 +3,12 @@ package Api;
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.RestAssured.useRelaxedHTTPSValidation;
 
 public class UserMethods extends RestClient {
-public ValidatableResponse create(User user) {
+    private User user;
+public ValidatableResponse create(String name, String email, String password) {
+    user = new User(email, name, password);
     return
             given()
                     .spec(getBaseSpec())

@@ -3,6 +3,8 @@ import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
+import java.time.Duration;
+
 public class MainPage {
     private final WebDriver driver;
     public MainPage(WebDriver driver){
@@ -13,6 +15,8 @@ public class MainPage {
     private By enterButton = By.xpath(".//button[text()='Войти в аккаунт']");
     //кнопка Личный кабинет
     private By accountButton = By.xpath("//*[@href='/account']");
+    //кнопка Оформить заказ
+    private By orderButton = By.xpath(".//button[text()='Оформить заказ']");
     //кнопка Конструктор xpath AppHeader_header__linkText__3q_va ml-2
     private By constructorButton = By.xpath("//*[text()='Конструктор']");
     //кнопка Логотип classname AppHeader_header__logo__2D0X2
@@ -55,6 +59,11 @@ public class MainPage {
 
     public String getClassNameFilling() {
         return driver.findElement(fillingButton).getAttribute("class");
+    }
+
+    public String getTextOrderButton() {
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
+        return driver.findElement(orderButton).getText();
     }
 
 }

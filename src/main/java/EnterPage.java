@@ -38,6 +38,13 @@ public class EnterPage {
     public void setPasswordToPasswordField(String password) {
         driver.findElement(passwordField).sendKeys(password);
     }
+    public void setEnterForm(String email, String password) {
+        new WebDriverWait(driver, Duration.ofSeconds(8))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa' and text()='Войти']")));
+        setEmailToEmailField(email);
+        setPasswordToPasswordField(password);
+        clickOnAuthButton();
+    }
 
     public String getPageUrl() {
         WebElement webElement = new WebDriverWait(driver, Duration.ofSeconds(2))

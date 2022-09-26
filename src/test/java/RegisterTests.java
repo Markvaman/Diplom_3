@@ -13,15 +13,11 @@ import java.util.concurrent.TimeUnit;
 
 public class RegisterTests {
     private WebDriver driver;
-    private UserMethods userMethods;
-    private User user;
     Faker faker = new Faker();
     String name = faker.name().firstName();
     String email = faker.internet().emailAddress();
     String password = faker.internet().password(6, 10);
     String passwordInvalid = faker.internet().password(1, 5);
-    private String accessToken;
-
 
 
     @Before
@@ -46,10 +42,10 @@ public class RegisterTests {
         objRegisterPage.clickOnRegisterButton();
         Assert.assertEquals("https://stellarburgers.nomoreparties.site/login", objEnterPage.getPageUrl());
 
-        user = new User(email, password);
-        userMethods = new UserMethods();
+        User user = new User(email, password);
+        UserMethods userMethods = new UserMethods();
         ValidatableResponse response = userMethods.login(user);
-        accessToken = response.extract().path("accessToken");
+        String accessToken = response.extract().path("accessToken");
         userMethods.delete(accessToken);
 
     }

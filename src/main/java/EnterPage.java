@@ -28,7 +28,6 @@ public class EnterPage {
     }
 
     public EnterPage clickOnForgetPasswordButton() {
-        driver.findElement(registerButton).click();
         driver.findElement(forgetPasswordButton).click();
         return new EnterPage(driver);
     }

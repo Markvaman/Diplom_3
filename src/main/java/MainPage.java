@@ -29,7 +29,6 @@ public class MainPage {
     //Кнопка Начинки
     private By fillingButton = By.xpath(".//span[@class = 'text text_type_main-default' and text()='Начинки']/parent::div");
     //Форма конструктора
-    private By constructorField = By.className("BurgerIngredients_ingredients__menuContainer__Xu3Mo");
 
 
 
@@ -58,8 +57,6 @@ public class MainPage {
         driver.findElement(constructorButton).click();
     }
 
-
-
     public String getClassNameBun() {
         return driver.findElement(bunsButton).getAttribute("class");
     }
@@ -75,6 +72,16 @@ public class MainPage {
     public String getTextOrderButton() {
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(30));
         return driver.findElement(orderButton).getText();
+    }
+
+    public void clickOnBun() {
+        driver.findElement(bunsButton).click();
+    }
+    public void clickOnSauce() {
+        driver.findElement(saucesButton).click();
+    }
+    public void clickOnFilling() {
+        driver.findElement(fillingButton).click();
     }
 
 }

@@ -14,6 +14,7 @@ public class RegisterPage {
    private By enterButton = By.xpath(".//a[text()='Войти']");
 
    private final By errorPassword = By.xpath(".//*[@class='input__error text_type_main-default']");
+   private By headerLogo = By.xpath("//*[@class='AppHeader_header__logo__2D0X2']");
 
    public EnterPage clickOnRegisterButton(){
       driver.findElement(registerButton).click();
@@ -45,5 +46,10 @@ public class RegisterPage {
    }
    public String getTextErrorPassword() {
       return driver.findElement(errorPassword).getText();
+   }
+
+   public MainPage clickOnHeaderButton() {
+      driver.findElement(headerLogo).click();
+      return new MainPage(driver);
    }
 }

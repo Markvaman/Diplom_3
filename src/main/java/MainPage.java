@@ -15,12 +15,13 @@ public class MainPage {
     private By enterButton = By.xpath(".//button[text()='Войти в аккаунт']");
     //кнопка Личный кабинет
     private By accountButton = By.xpath("//*[@href='/account']");
+    //кнопка Логотипа
+    private By headerLogo = By.xpath("//*[@class='AppHeader_header__logo__2D0X2']");
     //кнопка Оформить заказ
     private By orderButton = By.xpath(".//button[text()='Оформить заказ']");
     //кнопка Конструктор xpath AppHeader_header__linkText__3q_va ml-2
     private By constructorButton = By.xpath("//*[text()='Конструктор']");
-    //кнопка Логотип classname AppHeader_header__logo__2D0X2
-    private By headerLogo = By.className("AppHeader_header__logo__2D0X2");
+
     //Кнопка Булочки в конструкторе className tab_tab__1SPyG  pt-4 pr-10 pb-4 pl-10 noselect
     private By bunsButton = By.xpath(".//span[@class = 'text text_type_main-default' and text()='Булки']/parent::div");
     //Кнопка Соусы
@@ -32,22 +33,32 @@ public class MainPage {
 
 
 
-    public void clickOnEnterButton() {
-        driver.findElement(enterButton).click();
+    public void clickOnLogoButton() {
+        driver.findElement(headerLogo).click();
     }
 
-    public void clickOnAccountButton() {
-        driver.findElement(accountButton).click();
+    public EnterPage clickOnEnterButton() {
+        driver.findElement(enterButton).click();
+        return new EnterPage(driver);
+    }
 
+    public EnterPage clickOnAccountButton() {
+        driver.findElement(accountButton).click();
+        return new EnterPage(driver);
+    }
+
+    public EnterPage clickAccountButtonForLoginUser() {
+        driver.findElement(accountButton).click();
+        new WebDriverWait(driver, Duration.ofSeconds(8))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//button[@class ='Account_button__14Yp3 text text_type_main-medium text_color_inactive' and text()='Выход']")));
+        return new EnterPage(driver);
     }
 
     public void clickOnConstructorButton() {
         driver.findElement(constructorButton).click();
     }
 
-    public void clickOnHeaderButton() {
-        driver.findElement(headerLogo).click();
-    }
+
 
     public String getClassNameBun() {
         return driver.findElement(bunsButton).getAttribute("class");

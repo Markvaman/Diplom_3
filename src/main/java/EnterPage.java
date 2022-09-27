@@ -19,16 +19,23 @@ public class EnterPage {
     private By registerButton = By.xpath(".//a[@class = 'Auth_link__1fOlj' and text() = 'Зарегистрироваться']");
     private By forgetPasswordButton = By.xpath(".//a[@class = 'Auth_link__1fOlj' and text() = 'Восстановить пароль']");
 
-    public void clickOnRegisterButton() {
+    private final By exitButton = By.xpath(".//button[@class ='Account_button__14Yp3 text text_type_main-medium text_color_inactive' and text()='Выход']");
+
+
+    public EnterPage clickOnRegisterButton() {
         driver.findElement(registerButton).click();
+        return new EnterPage(driver);
     }
 
-    public void clickOnForgetPasswordButton() {
+    public EnterPage clickOnForgetPasswordButton() {
+        driver.findElement(registerButton).click();
         driver.findElement(forgetPasswordButton).click();
+        return new EnterPage(driver);
     }
 
-    public void clickOnAuthButton() {
+    public MainPage clickOnAuthButton() {
         driver.findElement(authButton).click();
+        return new MainPage(driver);
     }
 
     public void setEmailToEmailField(String email) {
@@ -38,6 +45,7 @@ public class EnterPage {
     public void setPasswordToPasswordField(String password) {
         driver.findElement(passwordField).sendKeys(password);
     }
+
     public void setEnterForm(String email, String password) {
         new WebDriverWait(driver, Duration.ofSeconds(8))
                 .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa' and text()='Войти']")));
@@ -50,5 +58,13 @@ public class EnterPage {
         WebElement webElement = new WebDriverWait(driver, Duration.ofSeconds(2))
                 .until(ExpectedConditions.visibilityOfElementLocated(authButton));
         return driver.getCurrentUrl();
+    }
+
+    public void clickExitButton() {
+        new WebDriverWait(driver, Duration.ofSeconds(8))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//button[@class ='Account_button__14Yp3 text text_type_main-medium text_color_inactive' and text()='Выход']")));
+        driver.findElement(exitButton).click();
+        new WebDriverWait(driver, Duration.ofSeconds(8))
+                .until(ExpectedConditions.visibilityOfElementLocated(By.xpath(".//button[@class='button_button__33qZ0 button_button_type_primary__1O7Bx button_button_size_medium__3zxIa' and text()='Войти']")));
     }
 }

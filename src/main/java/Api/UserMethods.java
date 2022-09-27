@@ -3,7 +3,6 @@ package Api;
 import io.restassured.response.ValidatableResponse;
 
 import static io.restassured.RestAssured.given;
-import static io.restassured.RestAssured.useRelaxedHTTPSValidation;
 
 public class UserMethods extends RestClient {
     private User user;

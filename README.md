@@ -1,7 +1,8 @@
 # UI tests for https://stellarburgers.nomoreparties.site
 
- In this project I created UI tests for testing main user scenarios
- Although I used API tests to optimaze the user creation and removing
+In this project I created UI tests for testing main user scenarios
+Although I used API tests to optimaze the user creation and removing
+
 
 Project is developed with:
 

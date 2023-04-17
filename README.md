@@ -2,7 +2,7 @@
 
 In this project I created UI tests for testing main users scenario accordingly the requirenments 
 
-Install the dependencies and devDependencies and start the server.
+Although I used API test to optimize the user creation and removing.
 
 
 Project is developed with:

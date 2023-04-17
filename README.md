@@ -4,7 +4,6 @@ In this project I created UI tests for testing main users scenario accordingly t
 
 Install the dependencies and devDependencies and start the server.
 
-```sh
 
 Project is developed with:
 
